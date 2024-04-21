@@ -15,12 +15,12 @@ struct PaletteChooser: View {
     var body: some View {
         HStack {
             chooser
+                .popover(isPresented: $showPaletteEditor) {
+                    PaletteEditor()
+                }
             view(for: store.palettes[store.cursorIndex])
         }
         .clipped()
-        .sheet(isPresented: $showPaletteEditor) {
-            PaletteEditor()
-        }
     }
     
     var chooser: some View {
