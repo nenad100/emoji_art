@@ -20,11 +20,13 @@ struct PaletteChooser: View {
         }
         .clipped()
         .sheet(isPresented: $showPaletteEditor) {
-            PaletteEditor(palette: $store.palettes[store.cursorIndex])
-                .font(nil)
+            NavigationStack {
+                PaletteEditor(palette: $store.palettes[store.cursorIndex])
+                    .font(nil)
+            }
         }
         .sheet(isPresented: $showPaletteList) {
-            EditablePaletteList()
+            EditablePaletteList(store: store)
                 .font(nil)
         }
     }
